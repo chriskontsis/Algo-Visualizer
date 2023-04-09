@@ -10,6 +10,7 @@ class Graphics;
 class SortingAlgos {
 public:
     Graphics* graphic;
+    void generateVector(std::vector<int> &vec);
     void bubbleSort(std::vector<int>& v, SDL_Renderer* renderer);
     void mergeSort(std::vector<int>& v, SDL_Renderer* renderer);
     void quickSort(std::vector<int>& v, SDL_Renderer* renderer);

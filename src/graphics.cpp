@@ -9,28 +9,11 @@
 
 using namespace std;
 
-void Graphics::draw(vector<int> &vec, SDL_Renderer *renderer, unsigned int i, unsigned int j)
-{
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-
-    for (int i = 0; i < vec.size(); i++)
-    {
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderDrawLine(renderer, i, 99, i, vec[i]);
-    }
-}
-
 int main()
 {
     SortingAlgos *sort = new SortingAlgos;
-    random_device rd;
-    mt19937 mt(rd());
-    uniform_int_distribution<> dist(1, 99);
-    vector<int> v;
-
-    for (int i = 0; i < 100; i++)
-        v.push_back(dist(mt));
+    vector<int> v(100);
+    sort->generateVector(v);
 
     SDL_Init(SDL_INIT_VIDEO);
     SDL_Window *window = nullptr;
@@ -88,4 +71,16 @@ int main()
     // // Clean up
     SDL_Quit();
     // return 0;
+}
+
+void Graphics::draw(vector<int> &vec, SDL_Renderer *renderer, unsigned int i, unsigned int j)
+{
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
+    for (int i = 0; i < vec.size(); i++)
+    {
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderDrawLine(renderer, i, 99, i, vec[i]);
+    }
 }

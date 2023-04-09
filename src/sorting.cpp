@@ -2,6 +2,12 @@
 #include <algorithm>
 #include <random>
 #include <utility>
+#include <iostream>
+#include <vector>
+#include <random>
+#include <algorithm>
+
+using namespace std;
 
 void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
 {
@@ -20,4 +26,14 @@ void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
             SDL_Delay(10);
         }
     }
+}
+
+void SortingAlgos::generateVector(std::vector<int> &v)
+{
+    random_device rd;
+    mt19937 mt(rd());
+    uniform_int_distribution<> dist(1, 99);
+
+    for (int i = 0; i < 100; i++)
+        v[i] = dist(mt);
 }
