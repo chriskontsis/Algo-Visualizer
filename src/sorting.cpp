@@ -22,7 +22,6 @@ void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
             }
             // Draw the state
             graphic->draw(v, renderer, i, j);
-            SDL_RenderPresent(renderer);
             SDL_Delay(10);
         }
     }
