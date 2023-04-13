@@ -59,6 +59,7 @@ int main()
                     cout << "Starting Bubble Sort" << '\n';
                     sort->bubbleSort(v, renderer);
                     cout << "Bubble Sort Finished" << '\n';
+                    sort->generateVector(v);
                     break;
                 }
                 }
@@ -67,12 +68,8 @@ int main()
         SDL_Delay(16);
     }
 
-    // // Close and destroy the window
     SDL_DestroyWindow(window);
-
-    // // Clean up
     SDL_Quit();
-    // return 0;
 }
 
 void Graphics::draw(vector<int> &vec, SDL_Renderer *renderer, unsigned int left, unsigned int right)
