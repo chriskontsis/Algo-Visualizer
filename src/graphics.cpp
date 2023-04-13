@@ -50,7 +50,7 @@ int main()
                 {
                 case (SDLK_q):
                 {
-                    is_running = true;
+                    is_running = false;
                     cout << "Exiting Visualuzer" << '\n';
                     break;
                 }
@@ -82,13 +82,15 @@ void Graphics::draw(vector<int> &vec, SDL_Renderer *renderer, unsigned int left,
 
     for (int i = 0; i < vec.size(); i++)
     {
+        SDL_Rect rect = {i, 99 - vec[i], 1, vec[i]};
         if (i == left)
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         else if (i == right)
             SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
         else
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderDrawLine(renderer, i, 99, i, vec[i]);
+        // SDL_RenderDrawLine(renderer, i, 99, i, vec[i]);
+        SDL_RenderFillRect(renderer, &rect);
     }
     SDL_RenderPresent(renderer);
 }
