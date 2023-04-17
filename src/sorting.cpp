@@ -20,13 +20,46 @@ void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
             {
                 std::swap(v[j], v[j + 1]);
             }
-            // Draw the state
             graphic->draw(v, renderer, i, j);
             SDL_Delay(10);
         }
     }
 }
 
+void SortingAlgos::quickSort(std::vector<int> &v, SDL_Renderer *renderer, int lo, int hi)
+{
+    if (lo < hi)
+    {
+        int pi = quickSortPartition(v, lo, hi);
+        quickSort(v, renderer, lo, pi - 1);
+        quickSort(v, renderer, pi + 1, hi);
+    }
+}
+
+int SortingAlgos::quickSortPartition(std::vector<int> &v, int lo, int hi)
+{
+    int pivot = v[hi];
+    int i = (lo - 1);
+
+    for (int j = lo; j < hi; j++)
+    {
+        if (v[j] < pivot)
+        {
+            ++i;
+            swap(&v[i], &v[j]);
+        }
+    }
+
+    swap(&v[i + 1], &v[hi]);
+    return (i + 1);
+}
+
+void SortingAlgos::swap(int *a, int *b)
+{
+    int t = *a;
+    *a - *b;
+    *b = t;
+}
 void SortingAlgos::generateVector(std::vector<int> &v)
 {
     random_device rd;
