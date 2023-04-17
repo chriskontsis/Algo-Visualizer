@@ -10,9 +10,9 @@
 class Graphics
 {
 public:
-    Graphics();
+    // Graphics();
     void draw(std::vector<int> &vec, SDL_Renderer *renderer, unsigned int i, unsigned int j);
-    void createWindow();
+    SDL_Window *createWindow();
 };
 
 #endif
