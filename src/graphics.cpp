@@ -9,8 +9,70 @@
 
 const int WIDNOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
+using namespace std;
 
-void Graphics::draw(std::vector<int> &vec, SDL_Renderer *renderer, unsigned int left, unsigned int right)
+int main()
+{
+    SortingAlgos *sort = new SortingAlgos;
+    vector<int> v(100);
+    sort->generateVector(v);
+
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Window *window = nullptr;
+    SDL_Renderer *renderer = nullptr;
+    // SDL_CreateWindowAndRenderer(100*10, 100*10, 0, &window, &renderer);
+    // SDL_RenderSetScale(renderer,10,10);
+    window = SDL_CreateWindow(
+        "An SDL2 window",        // window title
+        SDL_WINDOWPOS_UNDEFINED, // initial x position
+        SDL_WINDOWPOS_UNDEFINED, // initial y position
+        WIDNOW_WIDTH,            // width, in pixels
+        WINDOW_HEIGHT,           // height, in pixels
+        SDL_WINDOW_OPENGL        // flags - see below
+    );
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_RenderSetScale(renderer, 6, 4);
+
+    // // A basic main loop to prevent blocking
+    bool is_running = true;
+    SDL_Event event;
+    while (is_running)
+    {
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
+                is_running = false;
+            }
+            else if (event.type == SDL_KEYDOWN)
+            {
+                switch (event.key.keysym.sym)
+                {
+                case (SDLK_q):
+                {
+                    is_running = false;
+                    cout << "Exiting Visualuzer" << '\n';
+                    break;
+                }
+                case (SDLK_0):
+                {
+                    cout << "Starting Bubble Sort" << '\n';
+                    sort->bubbleSort(v, renderer);
+                    cout << "Bubble Sort Finished" << '\n';
+                    sort->generateVector(v);
+                    break;
+                }
+                }
+            }
+        }
+        SDL_Delay(16);
+    }
+
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+}
+
+void Graphics::draw(vector<int> &vec, SDL_Renderer *renderer, unsigned int left, unsigned int right)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
@@ -28,18 +90,4 @@ void Graphics::draw(std::vector<int> &vec, SDL_Renderer *renderer, unsigned int 
         SDL_RenderFillRect(renderer, &rect);
     }
     SDL_RenderPresent(renderer);
-}
-
-SDL_Window *Graphics::createWindow()
-{
-    SDL_Window *window = nullptr;
-    window = SDL_CreateWindow(
-        "An SDL2 window",        // window title
-        SDL_WINDOWPOS_UNDEFINED, // initial x position
-        SDL_WINDOWPOS_UNDEFINED, // initial y position
-        WIDNOW_WIDTH,            // width, in pixels
-        WINDOW_HEIGHT,           // height, in pixels
-        SDL_WINDOW_OPENGL        // flags - see below
-    );
-    return window;
 }
