@@ -7,7 +7,6 @@
 #include <random>
 #include <algorithm>
 
-using namespace std;
 
 void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
 {
@@ -20,7 +19,6 @@ void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
             {
                 std::swap(v[j], v[j + 1]);
             }
-            // Draw the state
             graphic->draw(v, renderer, i, j);
             SDL_Delay(10);
         }
@@ -34,10 +32,9 @@ void SortingAlgos::quickSort(std::vector<int>& v, SDL_Renderer *renderer, int lo
         quickSort(v, renderer, lo, pivot-1);
         quickSort(v, renderer, pivot+1, hi);
     }
-
 }
 
-int SortingAlgos::partition(vector<int>& v, SDL_Renderer *renderer, int lo, int hi) {
+int SortingAlgos::partition(std::vector<int>& v, SDL_Renderer *renderer, int lo, int hi) {
     int pivot = v[hi];
     int i = (lo-1);
 
@@ -53,7 +50,7 @@ int SortingAlgos::partition(vector<int>& v, SDL_Renderer *renderer, int lo, int 
         SDL_Delay(20);
     }
 
-    swap(v[i+1], v[hi]);
+    std::swap(v[i+1], v[hi]);
     graphic->draw(v, renderer, i+1, hi);
     SDL_Delay(20);
     return i+1;
@@ -61,9 +58,9 @@ int SortingAlgos::partition(vector<int>& v, SDL_Renderer *renderer, int lo, int 
 
 void SortingAlgos::generateVector(std::vector<int> &v)
 {
-    random_device rd;
-    mt19937 mt(rd());
-    uniform_int_distribution<> dist(1, 99);
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<> dist(1, 99);
 
     for (int i = 0; i < 100; i++)
         v[i] = dist(mt);
