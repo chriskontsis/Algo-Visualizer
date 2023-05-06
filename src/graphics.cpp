@@ -62,6 +62,14 @@ int main()
                     sort->generateVector(v);
                     break;
                 }
+                case(SDLK_1): 
+                {
+                    cout << "Starting Quicksort" << '\n';
+                    sort->quickSort(v, renderer, 0, v.size()-1);
+                    cout << "Quicksort finished" << '\n';
+                    sort->generateVector(v);
+                    break;
+                }
                 }
             }
         }
