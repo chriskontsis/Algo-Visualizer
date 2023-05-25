@@ -56,6 +56,9 @@ int SortingAlgos::partition(std::vector<int>& v, SDL_Renderer *renderer, int lo,
     return i+1;
 }
 
+void SortingAlgos::insertionSort(std::vector<int>& v, SDL_Renderer* renderer) {
+    
+}
 void SortingAlgos::generateVector(std::vector<int> &v)
 {
     std::random_device rd;

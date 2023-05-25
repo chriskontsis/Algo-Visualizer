@@ -16,6 +16,7 @@ public:
     void quickSort(std::vector<int>& v, SDL_Renderer* renderer, int lo, int hi);
     int partition(std::vector<int>& v, SDL_Renderer* renderer, int lo, int hi);
     void heapSort(std::vector<int>& v, SDL_Renderer* renderer);
+    void insertionSort(std::vector<int>& v, SDL_Renderer* renderer);
 };
 
 #endif
