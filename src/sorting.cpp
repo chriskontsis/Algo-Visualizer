@@ -20,7 +20,6 @@ void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
                 std::swap(v[j], v[j + 1]);
             }
             graphic->draw(v, renderer, i, j);
-            SDL_Delay(10);
         }
     }
 }

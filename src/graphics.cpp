@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-    SortingAlgos *sort = new SortingAlgos;
+    unique_ptr<SortingAlgos> sort(new SortingAlgos);
     vector<int> v(100);
     sort->generateVector(v);
 
@@ -30,8 +30,7 @@ int main()
     );
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_RenderSetScale(renderer, 6, 4);
-
-    // // A basic main loop to prevent blocking
+    
     bool is_running = true;
     SDL_Event event;
     while (is_running)
