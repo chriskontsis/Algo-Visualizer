@@ -57,8 +57,18 @@ int SortingAlgos::partition(std::vector<int>& v, SDL_Renderer *renderer, int lo,
 }
 
 void SortingAlgos::insertionSort(std::vector<int>& v, SDL_Renderer* renderer) {
-    
+    for(int i = 1; i < v.size(); i++) {
+        int key = v[i];
+        int j = i-1;
+        while(key < v[j] && j>=0) {
+            v[j+1] = v[j--];
+            graphic->draw(v, renderer, j, j+1);
+        }
+        v[j+1] = key;
+        graphic->draw(v, renderer, j, j+1);
+    }
 }
+
 void SortingAlgos::generateVector(std::vector<int> &v)
 {
     std::random_device rd;

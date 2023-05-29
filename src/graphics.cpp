@@ -20,8 +20,6 @@ int main()
     SDL_Init(SDL_INIT_VIDEO);
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
-    // SDL_CreateWindowAndRenderer(100*10, 100*10, 0, &window, &renderer);
-    // SDL_RenderSetScale(renderer,10,10);
     window = SDL_CreateWindow(
         "An SDL2 window",        // window title
         SDL_WINDOWPOS_UNDEFINED, // initial x position
@@ -70,6 +68,14 @@ int main()
                     sort->generateVector(v);
                     break;
                 }
+                case(SDLK_2):
+                {
+                    cout << "Starting Insertion Sort" << '\n';
+                    sort->quickSort(v, renderer, 0, v.size()-1);
+                    cout << "Insertion Sort Finished" << '\n';
+                    sort->generateVector(v);
+                    break;
+                }
                 }
             }
         }
@@ -91,10 +97,9 @@ void Graphics::draw(vector<int> &vec, SDL_Renderer *renderer, unsigned int left,
         if (i == left)
             SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         else if (i == right)
-            SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
         else
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        // SDL_RenderDrawLine(renderer, i, 99, i, vec[i]);
         SDL_RenderFillRect(renderer, &rect);
     }
     SDL_RenderPresent(renderer);
