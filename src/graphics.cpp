@@ -75,6 +75,16 @@ int main()
                     sort->generateVector(v);
                     break;
                 }
+                case(SDLK_3):
+                {
+                    cout << "Starting Heap Sort" << '\n';
+                    sort->heapSort(v, renderer);
+                    cout << "Finished Heap Sort" << '\n';
+                    // for(auto& a : v)
+                    //     cout << a << ' ';
+                    sort->generateVector(v);
+                    break;
+                }
                 }
             }
         }

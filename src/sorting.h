@@ -13,10 +13,11 @@ public:
     void generateVector(std::vector<int> &vec);
     void bubbleSort(std::vector<int>& v, SDL_Renderer* renderer);
     void mergeSort(std::vector<int>& v, SDL_Renderer* renderer);
-    void quickSort(std::vector<int>& v, SDL_Renderer* renderer, int lo, int hi);
     int partition(std::vector<int>& v, SDL_Renderer* renderer, int lo, int hi);
     void heapSort(std::vector<int>& v, SDL_Renderer* renderer);
+    void heapify(std::vector<int>& v, SDL_Renderer* renderer, int n, int i);
     void insertionSort(std::vector<int>& v, SDL_Renderer* renderer);
+    void quickSort(std::vector<int>& v, SDL_Renderer* renderer, int lo, int hi);
 };
 
 #endif

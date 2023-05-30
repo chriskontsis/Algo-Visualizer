@@ -68,6 +68,36 @@ void SortingAlgos::insertionSort(std::vector<int>& v, SDL_Renderer* renderer) {
     }
 }
 
+void SortingAlgos::heapSort(std::vector<int>& v, SDL_Renderer* renderer) 
+{
+    int n = v.size();
+    for(int i = n/2-1; ~i; i--)
+        heapify(v, renderer,n,i);
+
+    for(int i = n-1; ~i; i--) {
+        std::swap(v[0], v[i]);
+        heapify(v, renderer, i, 0);
+    }
+
+}
+
+void SortingAlgos::heapify(std::vector<int>& v, SDL_Renderer* renderer, int n, int i) 
+{
+    int largest = i;
+    int left = 2*i;
+    int right = 2*i+1;
+
+    if(left < n && v[left] > v[largest])
+        largest = left;
+    if(right < n && v[right] > v[largest])
+        largest = right;
+    
+    if(largest != i) {
+        std::swap(v[i], v[largest]);
+        heapify(v, renderer, n, largest);
+    }
+}
+
 void SortingAlgos::generateVector(std::vector<int> &v)
 {
     std::random_device rd;
