@@ -7,9 +7,9 @@
 #include <random>
 #include <algorithm>
 
-
 void SortingAlgos::bubbleSort(std::vector<int> &v, SDL_Renderer *renderer)
 {
+    int swaps = 0;
     int n = v.size();
     for (int i = 0; i < n - 1; ++i)
     {

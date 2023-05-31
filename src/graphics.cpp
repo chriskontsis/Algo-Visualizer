@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
+#include <SDL2/SDL_ttf.h>
 #include <iostream>
 #include <vector>
 #include <random>
@@ -18,6 +19,8 @@ int main()
     sort->generateVector(v);
 
     SDL_Init(SDL_INIT_VIDEO);
+
+   
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
     window = SDL_CreateWindow(
@@ -28,6 +31,7 @@ int main()
         WINDOW_HEIGHT,           // height, in pixels
         SDL_WINDOW_OPENGL        // flags - see below
     );
+
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_RenderSetScale(renderer, 6, 4);
     
@@ -80,16 +84,20 @@ int main()
                     cout << "Starting Heap Sort" << '\n';
                     sort->heapSort(v, renderer);
                     cout << "Finished Heap Sort" << '\n';
-                    // for(auto& a : v)
-                    //     cout << a << ' ';
                     sort->generateVector(v);
                     break;
                 }
+                case(SDLK_4):
+                {
+                    
+                }
                 }
             }
+
         }
         SDL_Delay(16);
     }
+
 
     SDL_DestroyWindow(window);
     SDL_Quit();
@@ -113,3 +121,5 @@ void Graphics::draw(vector<int> &vec, SDL_Renderer *renderer, unsigned int left,
     }
     SDL_RenderPresent(renderer);
 }
+
+  
