@@ -76,6 +76,8 @@ void SortingAlgos::heapSort(std::vector<int>& v, SDL_Renderer* renderer)
 
     for(int i = n-1; ~i; i--) {
         std::swap(v[0], v[i]);
+        graphic->draw(v, renderer, 0, i);
+        SDL_Delay(50);
         heapify(v, renderer, i, 0);
     }
 
@@ -94,6 +96,8 @@ void SortingAlgos::heapify(std::vector<int>& v, SDL_Renderer* renderer, int n, i
     
     if(largest != i) {
         std::swap(v[i], v[largest]);
+        graphic->draw(v, renderer, i, largest);
+        SDL_Delay(50);
         heapify(v, renderer, n, largest);
     }
 }
